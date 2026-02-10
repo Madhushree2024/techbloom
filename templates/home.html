@@ -41,27 +41,32 @@
         {% endfor %}
     </section>
 
-   <footer class="footer">
-  <div class="footer-inner">
-    <div class="brand">TechBloom</div>
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <span class="brand">TechBloom</span>
+      <span class="muted">Building modern web experiences</span>
+    </div>
 
-    <div class="stats">
-      <div class="stat">
-        <span class="icon">👋</span>
+    <div class="footer-center">
+      <div class="metric">
         <span id="total">0</span>
         <span class="label">Visitors</span>
       </div>
-      <div class="divider"></div>
-      <div class="stat online">
+      <div class="separator"></div>
+      <div class="metric live">
         <span class="dot"></span>
         <span id="online">0</span>
-        <span class="label">Online</span>
+        <span class="label">Live</span>
       </div>
     </div>
 
-    <div class="copyright">© 2026 TechBloom. All rights reserved.</div>
+    <div class="footer-right">
+      © 2026 TechBloom
+    </div>
   </div>
 </footer>
+
 
 <script>
     function animate(id, target) {
