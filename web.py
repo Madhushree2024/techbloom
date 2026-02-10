@@ -49,7 +49,7 @@ def home():
     params = {
         "topic": category_param.lower(),  # filter by topic
         "language": "en",
-        "per_page": 6
+        "per_page": 10
     }
 
     response = requests.get(NEWS_API_URL, headers=headers, params=params)
