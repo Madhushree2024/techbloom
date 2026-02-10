@@ -32,29 +32,42 @@ def home():
     online = {k: v for k, v in online.items() if now - v < ONLINE_WINDOW}
 
     visitor_id = request.cookies.get("visitor_id")
-
     if not visitor_id:
         visitor_id = str(now) + request.remote_addr
         data["total"] += 1
 
-    # Update online
     online[visitor_id] = now
-
     data["online"] = online
     save_data(data)
 
-    # Fetch news
+    # Get category from URL
+    category = request.args.get("category", "").strip()
+    category_lower = category.lower()
+
+    # Fetch news from Hacker News
     url = "https://hn.algolia.com/api/v1/search_by_date?tags=story"
-    articles = requests.get(url).json()["hits"][:6]
+    all_articles = requests.get(url).json()["hits"]
+
+    # Filter articles by category keyword in title
+    filtered_articles = [
+        a for a in all_articles
+        if category_lower in (a.get("title") or "").lower()
+    ] if category_lower else all_articles
+
+    # Ensure at least 6 articles, fill with other trending stories if needed
+    articles = filtered_articles[:6]
+    if len(articles) < 6:
+        remaining = [a for a in all_articles if a not in articles]
+        articles += remaining[:6 - len(articles)]
 
     resp = make_response(render_template(
         "home.html",
         articles=articles,
         visitors=data["total"],
-        online=len(online)
+        online=len(online),
+        category=category if category else "Tech"
     ))
     resp.set_cookie("visitor_id", visitor_id, max_age=60*60*24*365)
-
     return resp
 
 
