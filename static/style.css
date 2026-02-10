@@ -213,11 +213,21 @@ nav {
 /* FOOTER */
 
 footer {
-    text-align: center;
-    padding: 28px;
-    font-size: 0.85rem;
-    color: var(--muted);
+  text-align: center;
 }
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-line {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
 
 /* RESPONSIVE */
 
