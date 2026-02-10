@@ -211,22 +211,38 @@ nav {
 }
 
 /* FOOTER */
-
-footer {
+.footer {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 14px 10px;
   text-align: center;
+  font-size: 14px;
 }
 
-.stats {
+.footer-stats {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
+  margin-bottom: 6px;
 }
 
-.footer-line {
-  margin-top: 8px;
-  font-size: 14px;
-  opacity: 0.8;
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.9;
 }
+
+.stat-item.online {
+  color: #22c55e;
+  font-weight: 500;
+}
+
+.footer-text {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
 
 
 /* RESPONSIVE */
