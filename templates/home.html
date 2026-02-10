@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>TechBloom</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <meta http-equiv="refresh" content="30">
+    <meta http-equiv="refresh" content="60">
 </head>
 <body>
     <!-- NAV -->
@@ -21,7 +21,6 @@
                 <a href="/?category=Data">Data</a>
                 <a href="/?category=VR">VR/AR</a>
             </div>
-
             <button id="themeToggle" title="Toggle theme">🌙</button>
         </div>
     </nav>
@@ -30,7 +29,7 @@
     <header class="hero">
         <div class="hero-text">
             <h1>Ideas that shape tomorrow</h1>
-            <p>Stories, breakthroughs, and quiet innovations — refreshed live for curious minds.</p>
+            <p>Stories, breakthroughs, and innovations — refreshed live for curious minds.</p>
         </div>
         <div class="hero-art">
             <div class="float-shape"></div>
@@ -43,7 +42,10 @@
         <div class="card">
             <span class="tag">{{ category }}</span>
             <h3>{{ article.title }}</h3>
-            <p class="author">By {{ article.author or "A curious builder" }}</p>
+            {% if article.description %}
+            <p class="description">{{ article.description }}</p>
+            {% endif %}
+            <p class="author">Source: {{ article.source_title or "Unknown" }}</p>
             <a href="{{ article.url }}" target="_blank">Read story →</a>
         </div>
         {% endfor %}
