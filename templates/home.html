@@ -38,18 +38,20 @@
 
     <!-- ARTICLES GRID -->
     <section class="grid">
-        {% for article in articles %}
-        <div class="card">
-            <span class="tag">{{ category }}</span>
-            <h3>{{ article.title }}</h3>
-            {% if article.description %}
-            <p class="description">{{ article.description }}</p>
-            {% endif %}
-            <p class="author">Source: {{ article.source_title or "Unknown" }}</p>
-            <a href="{{ article.url }}" target="_blank">Read story →</a>
-        </div>
-        {% endfor %}
-    </section>
+  {% for article in articles %}
+  <a href="{{ article.url }}" target="_blank" class="card-link">
+    <div class="card">
+      <span class="tag">{{ category }}</span>
+      <h3>{{ article.title }}</h3>
+      {% if article.description %}
+      <p class="description">{{ article.description }}</p>
+      {% endif %}
+      <p class="author">Source: {{ article.source_title or "Unknown" }}</p>
+    </div>
+  </a>
+  {% endfor %}
+</section>
+
 
     <!-- FOOTER -->
     <footer class="footer">

@@ -210,6 +210,13 @@ nav {
     transform: translateX(6px);
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+
 /* FOOTER */
 .footer {
   background: #020617;
