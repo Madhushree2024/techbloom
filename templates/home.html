@@ -38,20 +38,17 @@
 
     <!-- ARTICLES GRID -->
     <section class="grid">
-  {% for article in articles %}
-  <a href="{{ article.url }}" target="_blank" class="card-link">
-    <div class="card">
-      <span class="tag">{{ category }}</span>
-      <h3>{{ article.title }}</h3>
-      {% if article.description %}
-      <p class="description">{{ article.description }}</p>
-      {% endif %}
-      <p class="author">Source: {{ article.source_title or "Unknown" }}</p>
-    </div>
-  </a>
-  {% endfor %}
-</section>
-
+        {% for article in articles %}
+        <div class="card" onclick="window.open('{{ article.url }}', '_blank')">
+            <span class="tag">{{ category }}</span>
+            <h3>{{ article.title }}</h3>
+            {% if article.description %}
+            <p class="description">{{ article.description }}</p>
+            {% endif %}
+            <p class="author">Source: {{ article.source_title or "Unknown" }}</p>
+        </div>
+        {% endfor %}
+    </section>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -82,7 +79,6 @@
 
     <!-- SCRIPTS -->
     <script>
-        // Animate counters
         function animate(id, target) {
             let current = 0;
             const step = Math.ceil(target / 40);
@@ -102,15 +98,13 @@
         animate("total", {{ visitors }});
         animate("online", {{ online }});
 
-        // Light/Dark theme toggle
         const themeToggle = document.getElementById("themeToggle");
         themeToggle.addEventListener("click", () => {
             const html = document.documentElement;
-            if (html.getAttribute("data-theme") === "light") {
-                html.setAttribute("data-theme", "dark");
-            } else {
-                html.setAttribute("data-theme", "light");
-            }
+            html.setAttribute(
+                "data-theme",
+                html.getAttribute("data-theme") === "light" ? "dark" : "light"
+            );
         });
     </script>
 </body>
